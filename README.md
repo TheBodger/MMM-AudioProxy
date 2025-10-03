@@ -5,7 +5,7 @@ Some browser security will reject a visualiser directly accessing data from a DL
 
 This module is also a demo for the MMM-ButterMeNoParsnips module that provides support for the ButterChurn visualiser linked to an Audio tag. 
 
-A more comprehensive Ausio player using this module can be found at MMM-SimplePlayer
+A more comprehensive Audio player using this module can be found at MMM-SimplePlayer.
 
 ### Examples:
 
@@ -14,7 +14,7 @@ An example layout with a DLNA track playing, the butterchurn visualiser working 
 
 ### Dependencies
 
-This module requires the MMM-ButterMeNoParsnips module to be installed as it provides the audio visualiser support and example audio files.
+This module requires the MMM-ButterMeNoParsnips module to be installed as it provides the audio visualiser support, helpers and example audio files.
 
 This module requires npm modules installed after it is cloned
 
