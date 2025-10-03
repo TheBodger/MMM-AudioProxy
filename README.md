@@ -10,7 +10,7 @@ A more comprehensive Audio player using this module can be found at MMM-SimplePl
 ### Examples:
 
 An example layout with a DLNA track playing, the butterchurn visualiser working and an additional magic mirror module.
-![Example of MMM-ModulePosition resizing modules](images/screenshot_edit.png?raw=true "Example screenshot")
+![Example of MMM-AudioProxy playing CORs protected DLNA tracks mouse over the visualiser controls]("images/Screenshot 2025-10-03 182757.png?raw=true" "Example screenshot")
 
 ### Dependencies
 
@@ -49,6 +49,7 @@ To use this module, add the following minimum configuration block to the modules
 | `DLNAs`                | *Optional* - <br><br> **Possible values:** A list of host and port addresses to proxy.<br> **Default value:** [], see below for example
 | `useProxy`            |*Optional* -  Enables the conversion of DLNA addresses into Proxy compatible addresses when using the Utilities.getProxyAddress <br><br> **Possible values:** true,false <br> **Default value:** true
 | `proxyOnly`            |*Optional* -  If true, no audio or visualisation is rendered to the module<br><br> **Possible values:** true,false <br> **Default value:** true
+| `proxyBase`                | *Optional* - <br><br> **Possible values:** The URL+port of the proxy endpoint.<br> **Default value:** "http://localhost:8080/proxy"
 
 ### default srcs list
 ```js
@@ -62,6 +63,8 @@ The above list contains a couple of local mp3 files and a streaming URL from Som
   ```
 
 ### Additional Notes
+
+Other proxy servers can be used, change the proxyBase to the required URL that receives a target of the actual DLNA address and audio details.
 
 This comes with a Utilities library containing a function to convert a DLNA address into a proxy address.
 
