@@ -3,7 +3,7 @@ Audio proxy module to enable CORS free access to DLNA server for a visualiser
 
 Some browser security will reject a visualiser directly accessing data from a DLNA server. The proxy server that is started by this module when the magic mirror webserver starts will act as a proxy, sending the request to the DLNA server and amending succesful response headers to allow the visualiser to access the DLNA data.
 
-This module is also a demo for the MMM-ButterMeNoParsnips module that provides support for the ButterChurn visualiser linked to an Sudio tag. 
+This module is also a demo for the MMM-ButterMeNoParsnips module that provides support for the ButterChurn visualiser linked to an Audio tag. 
 
 A more comprehensive Ausio player using this module can be found at MMM-SimplePlayer
 
