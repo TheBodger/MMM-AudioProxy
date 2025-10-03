@@ -3,10 +3,11 @@ Module.register("MMM-AudioProxy", {
 	defaults:
 	{
 		useProxy: true, //obs
-		proxyOnly: false, //if true only use the proxy for URLS in the DLNAs list, if false add the audio controls etc as a test scenario
+		proxyOnly: true, //if true only use the proxy for URLS in the DLNAs list, if false add the audio controls etc as a test scenario
 		srcIdx:0,
-		srcs: ["modules/MMM-ButterMeNoParsnips/rocku.mp3", "https://ice6.somafm.com/groovesalad-256-mp3", "modules/MMM-ButterMeNoParsnips/viper.mp3", "http://192.168.1.39:50002/m/MP3/34400.mp3"],
-		DLNAs: ["http://192.168.1.39:50002"], //add servers when found here
+		srcs: ["modules/MMM-ButterMeNoParsnips/rocku.mp3", "https://ice6.somafm.com/groovesalad-256-mp3", "modules/MMM-ButterMeNoParsnips/viper.mp3"],// "http://192.168.1.39:50002/m/MP3/34400.mp3"],
+		
+		DLNAs: [], //add servers when found here
 	},
 
 	getScripts() {
@@ -71,7 +72,7 @@ Module.register("MMM-AudioProxy", {
 			wrapper.appendChild(srcBtn);
 		}
 		
-		this.audio.src = Utilities.getProxyAudioSrc(this.config.srcs[3], this.config); //pass the config to tell it if to use the proxy or not, the config also holds the DLNA ip addresses to use as source
+		this.audio.src = Utilities.getProxyAudioSrc(this.config.srcs[this.config.srcIdx], this.config); //pass the config to tell it if to use the proxy or not, the config also holds the DLNA ip addresses to use as source
 		
 		return wrapper
 	}

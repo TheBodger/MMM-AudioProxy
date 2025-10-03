@@ -12,6 +12,8 @@ An example layout with a DLNA track playing, the butterchurn visualiser working 
 
 ### Dependencies
 
+This module requires the MMM-ButterMeNoParsnips module to be installed as it provides the audio visualiser support and example audio files.
+
 This module requires npm modules installed after it is cloned
 
 ## Installation
@@ -35,69 +37,35 @@ To use this module, add the following minimum configuration block to the END of 
 			module: "MMM-AudioProxy",
 		},
 ```
-### Not quite WYSIWYG
-
-If planning to reposition and / or resize most or all of the modules, moving them across the screen far from their original positions, the best way of ensuring the best results is to give them the same initial module position in the config.js. top_bar works best. 
-
-When repositioning modules, their contents may left justify. This is only in the positioner and when the custom.css is applied and the postioning module removed from the config, the correct justification will be shown on you magic mirror.
-
-### Known "Features" and Docker watch outs
-
-Docker implementations may not provide all the permissions required to write the custom CSS to the css folder. If the file isnt being written or is empty, check that the css folder in the MMM-ModulePosition folder has write permissions for the Docker instance. i.e. Synology NAS requires that the folder has read/write access applied for Everyone
-
-The MMM-WallPaper module (https://github.com/kolbyjack/MMM-Wallpaper) - awesome module! covers the grid. Grid snapping will still work but the grid will not be visible. The grid will be visible when the MMM-WallPaper module is removed from the config file.
-
-### MMM-Carousel compatability
-
-if using MMM-carousel, add/update the ignoreModules line to include module position otherwise the module wont operate correctly
-```js
-		{
-			module: 'MMM-Carousel',
-			config: {
-				ignoreModules:['MMM-ModulePosition'],
-				//rest of config
-		      }
-		},
-```
-If you are using the carousel arrow keys that appear on the screen, these wil be disabled when running this module. there is a simple workaround.
-
-If the carousel transitioninterval is set to 0, temporarily change it to 10000 ~(10 seconds) which will ensure each slide is shown whilst this module is running. Any changes made on any of the slides during an edit session will be captured in the save file and can be used in custom.css as described below.
-
-This also works if you already have the slides changing automatically.
-
-### Saving and using custom.css
-
-This module uses the names allocated by the MM process, which will change depending on their absolute order within the config files. Make sure that this module is the last in the configuration file to ensure all modules have the correct name when the new layout is saved.
-
-Drag and /or resize the modules displayed on the MM display. Some module contents will resize to fit the new module size, others will ignore the size set due to how that particular module is coded.
-
-Once the layout is saved, using the SAVE button, it can be found in the css sub folder of the MMM-ModulePosition folder (it should be here: modules/MMM-ModulePosition/css/)
-
-Each save is given the name of custom.css.timestamp, where timestamp is a numeric representation of the time when the file is saved and will always be unique. This is to allow multiple saves within one positioning session without overwriting each save.
-
-To use the saved custom css file, simply copy all the contents and paste into the bottom of the custom.css file found in the magic mirror css folder, normally found as a sub folder to the MagicMirror folder. Remove this module from the config file and restart MM2.
-
-If any new modules are added to the MM config, to maintain the validity of the new custom CSS, ensure they are added at the end of the modules list. If a module is removed, then the custom CSS may not behave as expected and a new custom CSS will need to be created.
-
 
 ### Configuration Options
 
 | Option                  | Details
 |------------------------ |--------------
-| `text`                | *Optional* - <br><br> **Possible values:** Any string.<br> **Default value:** "... loading"
-| `easeAmount`            | *Optional* - the percentage of the total delta to move an object during each frame<br><br> **Possible values:** a numeric value where 1 = 100%<br> **Default value:** 0.3
-| `FPS`         | *Optional* - frames per second of the animation of objects during resizing and dragging<br><br> **Possible values:** a whole numeric value between 5 and 60 <br> **Default value:** 15
-| `minimum_size`            | *Optional* - minimum size in pixels that the resizer will allow an objects width and height to be.<br><br> **Possible values:** a whole number of pixels <br> **Default value:** 50 
-| `canvasid`        | *Optional* - the name of the dom element within the MM display to use as a relative container for any movements. If not set then the window is used.<br><br> **Possible values:** any dom element defined within the current MM display <br> **Default value:** `"body"`
-| `grid`            |*Optional* -  the size of a grid in pixels to snap modules to when dragging and resizing<br><br> **Possible values:** a whole number of pixels. <br> **Default value:** 10
-| `showAlerts`            |*Optional* -  display javscript alerts on the screen that are created for events such as custom css file save<br><br> **Possible values:** true,false <br> **Default value:** true
+| `srcIdx`                | *Optional* - <br><br> **Possible values:** Any value between 0 and the number of src entries in srcs - 1.<br> **Default value:** 0
+| `srcs`                | *Optional* - <br><br> **Possible values:** A list of test audio sources in the format ["source1","source2",etc].<br> **Default value:** see below
+| `DLNAs`                | *Optional* - <br><br> **Possible values:** A list of host and port addresses to proxy.<br> **Default value:** [], see below for example
+| `useProxy`            |*Optional* -  Enables the conversion of DLNA addresses into Proxy compatible addresses<br><br> **Possible values:** true,false <br> **Default value:** true
+| `proxyOnly`            |*Optional* -  If true, no audio or visualisation is rendered to the module<br><br> **Possible values:** true,false <br> **Default value:** true
+
+### example srcs list
+```js
+["modules/MMM-ButterMeNoParsnips/rocku.mp3", "https://ice6.somafm.com/groovesalad-256-mp3", "modules/MMM-ButterMeNoParsnips/viper.mp3"],
+```
+
+The above list contains a couple of local mp3 files and a streaming URL from SomaFM. You can add your own mp3 files to any module folder or use other streaming URLs.
+
+### Example DLNAs list
+```js
+  DLNAs: ["http://192.168.10.39:50002"], //add other servers as required here
+  ```
 
 ### Additional Notes
 
-This is a WIP; changes are being made all the time to improve the compatibility across the modules. 
+This comes with a Utilities library containing a function to convert a DLNA address into a proxy address.
 
-Leave settings as the default for best results, minimum size is probably the only setting that may need amending depending on the size of the MM2 display
+```js
+  proxyURL = Utilities.getProxyAddress(dlnaAddress,this.config);
+```
 
-This has been tested with a number of different MM layouts and layout options. It may however not cater for all combinations and may have problems with modules that adjust the modules displayed in the MM display or that swap between sets of visible modules. Try it out to see if it works ok with your favorite layout. Raise an issue in Github if it doesnt work as expected.
-
-
+The proxyURL is then used as the source for the audio player.
