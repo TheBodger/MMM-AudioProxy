@@ -9,7 +9,7 @@ A more comprehensive Audio player using this module can be found at MMM-SimplePl
 
 ### Examples:
 
-An example layout with a DLNA track playing, the butterchurn visualiser working and an additional magic mirror module.
+An example layout with a DLNA track playing, the butterchurn visualiser working and an additional magic mirror module.<br>
 ![Example of MMM-AudioProxy playing CORs protected DLNA tracks mouse over the visualiser controls](images/Screenshot2025-10-03182757.png?raw=true "Example screenshot")
 
 ### Dependencies
