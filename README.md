@@ -50,7 +50,7 @@ To use this module, add the following minimum configuration block to the modules
 | `srcs`                | *Optional* - <br><br> **Possible values:** A list of audio sources in the format ["source1","source2",etc].<br> **Default value:** see below
 | `DLNAs`                | *Optional* - <br><br> **Possible values:** A list of host and port addresses to proxy.<br> **Default value:** [], see below for example
 | `useProxy`            |*Optional* -  Enables the conversion of DLNA addresses into Proxy compatible addresses when using the Utilities.getProxyAddress <br><br> **Possible values:** true,false <br> **Default value:** true
-| `proxyOnly`            |*Optional* -  If true, no audio or visualisation is rendered to the module<br><br> **Possible values:** true,false <br> **Default value:** true
+| `proxyOnly`            |*Optional* -  If true, no audio or visualisation is rendered by the module<br><br> **Possible values:** true,false <br> **Default value:** true
 | `proxyBase`                | *Optional* - <br><br> **Possible values:** The URL+port of the proxy endpoint.<br> **Default value:** "http://localhost:8080/proxy"
 
 ### default srcs list
