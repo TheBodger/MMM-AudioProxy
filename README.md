@@ -57,7 +57,7 @@ To use this module, add the following minimum configuration block to the modules
 ```js
 ["modules/MMM-ButterMeNoParsnips/rocku.mp3", "https://ice6.somafm.com/groovesalad-256-mp3", "modules/MMM-ButterMeNoParsnips/viper.mp3"],
 ```
-The above list contains a couple of local mp3 files and a streaming URL from SomaFM. You can add your own mp3 files to any module folder or use other streaming URLs.
+The above list contains a couple of local mp3 files and a streaming URL from SomaFM. You can add other mp3 files from any folders below the MAgicMirror folder or use other streaming URLs.
 
 ### Example DLNAs list
 ```js
