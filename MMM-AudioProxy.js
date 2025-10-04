@@ -5,7 +5,7 @@ Module.register("MMM-AudioProxy", {
 		useProxy: true, //obs
 		proxyOnly: true, //if true only use the proxy for URLS in the DLNAs list, if false add the audio controls etc as a test scenario
 		srcIdx:0,
-		srcs: ["modules/MMM-ButterMeNoParsnips/rocku.mp3", "https://ice6.somafm.com/groovesalad-256-mp3", "modules/MMM-ButterMeNoParsnips/viper.mp3"],// "http://192.168.1.39:50002/m/MP3/34400.mp3"],
+		srcs: ["modules/MMM-ButterMeNoParsnips/music/rocku.mp3", "https://ice6.somafm.com/groovesalad-256-mp3", "modules/MMM-ButterMeNoParsnips/music/viper.mp3"],// "http://192.168.1.39:50002/m/MP3/34400.mp3"],
 		DLNAs: [], //add servers when found here
 		proxyBase: "http://localhost:8080/proxy", //the URL of the proxy endpoint
 	},
