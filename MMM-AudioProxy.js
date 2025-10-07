@@ -24,7 +24,7 @@ Module.register("MMM-AudioProxy", {
 			"https://unpkg.com/butterchurn-presets@3.0.0-beta.4/dist/base.min.js",
 			"https://unpkg.com/butterchurn-presets@3.0.0-beta.4/dist/extra.min.js",
 			'modules/MMM-AudioProxy/utilities.js',
-			'modules/MMM-butterMeNoParsnips/helpers.js',
+			'modules/MMM-ButterMeNoParsnips/helpers.js',
 		]
 	},
 
