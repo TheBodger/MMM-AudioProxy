@@ -10,6 +10,15 @@ Module.register("MMM-AudioProxy", {
 		proxyBase: "http://localhost:8080/proxy", //the URL of the proxy endpoint
 	},
 
+	start() {
+
+		if (window.myModuleAPI && typeof window.myModuleAPI.doSomething === "function") {
+			window.myModuleAPI.doSomething("Hello from MagicMirror!");
+		}
+		else { console.log("myModuleAPI or doSomething is not defined", typeof window.myModuleAPI); }
+
+	},
+
 	getScripts() {
 		return [
 			"https://unpkg.com/butterchurn-presets@3.0.0-beta.4/dist/base.min.js",
@@ -73,7 +82,7 @@ Module.register("MMM-AudioProxy", {
 		}
 		
 		this.audio.src = Utilities.getProxyAudioSrc(this.config.srcs[this.config.srcIdx], this.config); //pass the config to tell it if to use the proxy or not, the config also holds the DLNA ip addresses to use as source
-		
-		return wrapper
+
+		return wrapper;
 	}
 });
