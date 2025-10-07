@@ -38,7 +38,7 @@ Module.register("MMM-AudioProxy", {
 
 			this.audio = document.createElement("audio"); //this is used by butterme to get the audio source
 			this.audio.crossOrigin = "anonymous";
-			this.audio.id = "sndAudio";
+			this.audio.id = "audioPlayer";
 			this.audio.autoplay = true; //some browsers will honour this as soon as the src is set.
 			this.audio.controls = false;
 
@@ -60,7 +60,7 @@ Module.register("MMM-AudioProxy", {
 			butterMeDiv.id = "butterme";
 			butterMeDiv.className = "butterme";
 
-			Helpers.addBMConfig("sndAudio", true, "butterme"); //set the config for butterme only
+			Helpers.addBMConfig("audioPlayer", true, "butterme"); //set the config for butterme only
 			Helpers.addBMScript(); //writes the butterme to the page as it has to be type module!
 
 			wrapper = document.createElement("div"); //main wrapper for the module
